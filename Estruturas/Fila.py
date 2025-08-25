@@ -25,7 +25,3 @@ class Fila:
     
     def __str__(self):
         return str(self.fila)
-
-
-filaNormal = LDE()
-print(filaNormal)
