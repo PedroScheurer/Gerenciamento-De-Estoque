@@ -1,4 +1,4 @@
-from DNodo import DNodo
+from Estruturas.DNodo import DNodo
 
 class LDE:
     def __init__(self):
