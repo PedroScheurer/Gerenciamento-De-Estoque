@@ -1,4 +1,4 @@
-from Lista import LDE
+from Estruturas.Lista import LDE
 
 class Pilha:
     def __init__(self):
