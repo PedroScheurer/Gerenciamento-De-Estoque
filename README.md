@@ -9,7 +9,7 @@ O projeto tem como objetivo aplicar conceitos de **Programação Orientada a Obj
 - **Professor:** Augusto Ortolan  
 
 ## Integrantes
-- Alessandro da Rosa ()
+- Alessandro da Rosa (1136281)
 - Luiza Eduarda Luza Neckel (1137716)
 - João Pedro Feraresi (1137675)
 - Pedro Dagneze (1137695)
