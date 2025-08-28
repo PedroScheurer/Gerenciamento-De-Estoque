@@ -1,7 +1,3 @@
-# Sistema de Controle de Estoque POO
-
-### Integrantes: Alessandro da Rosa, Luiza Neckel, Joao Pedro, Pedro Dagneze, Pedro Scheurer
-
 # Sistema de Controle de Estoque e Vendas (Trabalho Avaliativo - Estrutura de Dados)
 
 Este repositório contém a implementação de um **mini sistema de estoque e vendas** desenvolvido como trabalho avaliativo da disciplina de **Estrutura de Dados**.  
@@ -15,6 +11,6 @@ O projeto tem como objetivo aplicar conceitos de **Programação Orientada a Obj
 ## Integrantes
 - Alessandro da Rosa ()
 - Luiza Eduarda Luza Neckel (1137716)
-- João Pedro ()
-- Pedro Dagneze ()
-- Pedro Scheurer ()
+- João Pedro Feraresi (1137675)
+- Pedro Dagneze (1137695)
+- Pedro Scheurer (1137877)
