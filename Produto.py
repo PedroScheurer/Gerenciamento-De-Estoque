@@ -4,6 +4,7 @@ class Produto:
 
     def __init__(self):
         self.produtos = []
+        self.vendas = Fila()
 
     def cadastrar_produto (self, nome_produto, quantidade_produto, preco_produto, id_produto):
         self.nome_produto = nome_produto
@@ -22,13 +23,19 @@ class Produto:
             print("Nenhum produto cadastrado.")
             return
         for p in self.produtos:
-            print(f"ID: {p['id']} | Nome: {p['nome']} | Quantidade: {p['quantidade']} | Preço: R$ {p['preco']:.2f}")
+            print(f"ID: {p['id']} | Nome: {p['nome']} | Quantidade: {p['quantidade']} | Preço (UNID): R$ {p['preco']:.2f}")
 
-    def realizar_venda(self, produto_vendido, quantidade_vendida):
-        self.produto_vendido = produto_vendido
-        self.quantidade_vendida = quantidade_vendida 
-        print(f"Venda do produto {self.produto_vendido} realizada com sucesso!")
-        self.vendas.enqueue({'Produto': self.produto_vendido, 'Quantidade': self.quantidade_vendida})
+    '''def realizar_venda(self, id_produto, quantidade_produto):
+        self.id_produto = id_produto
+        self.quantidade_produto = quantidade_produto 
+        self.vendas.enqueue({
+            'Produto': self.id_produto,
+            'Quantidade': self.quantidade_produto
+        })
+    def buscar_preco_produto(self, id_produto):
+        for p in self.produtos:
+            if p['id'] == id_produto:
+                return p['preco']'''
 
     def ver_fila_vendas(self):
         pass
@@ -37,7 +44,18 @@ class Produto:
         pass
 
     def exibir_valor_total_estoque(self):
-        pass
-
+        total = 0.0
+        for p in self.produtos:
+            qtd = p["quantidade"]
+            preco = p["preco"]
+            subtotal = qtd * preco
+            total += subtotal
+            print(f"ID: {p['id']} | {p['nome']} — {qtd} x R$ {preco:.2f} = R$ {subtotal:.2f}")
+        print(f"\nValor total do estoque: R$ {total:.2f}")
+    
     def exibir_valor_total_vendas(self):
         pass
+
+    def exbir_clientes_valores_totais_gastos(self):
+        pass
+
