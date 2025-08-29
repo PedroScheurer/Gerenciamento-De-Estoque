@@ -8,6 +8,7 @@ class Cliente:
         self.clientes.append({
             "id": id_cliente,
             "nome": nome_cliente,
+            "gasto": 0.0
         })
         
     def listar_cliente(self):
@@ -22,3 +23,15 @@ class Cliente:
             if cliente['id'] == id_cliente:
                 return cliente
         return None
+    
+    def adicionar_gasto(self, id_cliente, valor):
+        cliente = self.buscar_cliente(id_cliente)
+        if cliente:
+            cliente["gasto"] += valor
+
+    def listar_clientes_com_gastos(self):
+        if not self.clientes:
+            print("Nenhum cliente cadastrado.")
+            return
+        for p in self.clientes:
+            print(f"ID: {p['id']} | Nome: {p['nome']} | Total gasto: R$ {p['gasto']:.2f}")

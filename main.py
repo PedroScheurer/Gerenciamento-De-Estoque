@@ -12,6 +12,7 @@ produto = Produto()
 cliente = Cliente()
 id_produto = 0
 id_cliente = 0
+valor_total_vendas = 0
 
 while True:
     try:
@@ -150,10 +151,12 @@ while True:
             nome_produto = produto.buscar_nome_produto(id_produto)
 
             valor_total = quantidade_vendida * preco_produto
+            cliente.adicionar_gasto(id_cliente, valor_total)
             produto.vendas.inserir({preco_produto, nome_produto, quantidade_vendida, cliente_encontrado['nome']})
 
             print(f"\nVenda de {quantidade_vendida} unidades do produto '{nome_produto}' para o cliente '{cliente_encontrado['nome']}' realizada com sucesso!")
             print(f"Valor total da venda: R${valor_total:.2f}")
+            valor_total_vendas = valor_total_vendas + valor_total
             
             input("Pressione ENTER para voltar ao menu...")
 
@@ -172,11 +175,19 @@ while True:
         elif opcao == 8:
             os.system("cls")
             print("\n-------- VALOR TOTAL DE VENDAS --------")
+            if not valor_total_vendas:
+                print("Nenhuma venda foi realizada.")
+                input("\nPressione ENTER para continuar...")
+            else:
+                print(f"R$ {valor_total_vendas:.2f}")
+                input("\nPressione ENTER para continuar...")
+                os.system("cls")
 
         elif opcao == 9:
             os.system("cls")
             print("\n-------- CLIENTES E VALORES TOTAIS GASTOS --------")
-            pass
+            cliente.listar_clientes_com_gastos()
+            input("\nPressione ENTER para continuar...")
 
         elif opcao == 10:
             os.system("cls")

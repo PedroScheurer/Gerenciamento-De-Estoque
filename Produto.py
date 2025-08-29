@@ -75,7 +75,7 @@ class Produto:
         print(f"\nValor total do estoque: R$ {total:.2f}")
     
     def exibir_valor_total_vendas(self):
-        pass
+        total = 0.0
 
     def exbir_clientes_valores_totais_gastos(self):
         pass
