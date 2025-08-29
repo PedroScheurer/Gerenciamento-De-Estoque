@@ -13,6 +13,8 @@ class LDE:
         return False
 
     def _inserirPrimeiro(self, item):
+        if(item == None or item == ""):
+            return print("Insira um item válido")
         item = DNodo(item)
         self.header.proximo = item
         self.trailer.anterior = item
@@ -41,6 +43,9 @@ class LDE:
         if(self.estaVazia()):
             self._inserirPrimeiro(item)
             return
+        
+        if(item == None or item == ""):
+            return print("Insira um item válido")
         
         item = DNodo(item)
         antigoPrimeiro = self.header.proximo
@@ -73,6 +78,9 @@ class LDE:
         if(self.estaVazia()):
             self._inserirPrimeiro(item)
             return
+        
+        if(item == None or item == ""):
+            return print("Insira um item válido")
         
         item = DNodo(item)
         antigoUltimo = self.trailer.anterior

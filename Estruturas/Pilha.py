@@ -13,12 +13,13 @@ class Pilha:
         return
     
     def primeiro(self):
-        self.fila.primeiro()
+        self.pilha.primeiro()
         return
     
     def ultimo(self):
-        self.fila.ultimo()
+        self.pilha.ultimo()
         return
     
     def imprimir(self):
-        return self.pilha.imprimir()
+        self.pilha.imprimir()
+        return 

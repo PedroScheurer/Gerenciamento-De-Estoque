@@ -12,11 +12,11 @@ class Produto:
         self.preco_produto = preco_produto
         self.id_produto = id_produto
         self.produtos.append({
-    "id": id_produto,
-    "nome": nome_produto,
-    "quantidade": quantidade_produto,
-    "preco": preco_produto
-    })
+            "id": id_produto,
+            "nome": nome_produto,
+            "quantidade": quantidade_produto,
+            "preco": preco_produto
+        })
 
     def listar_produtos(self):
         if not self.produtos:
@@ -25,17 +25,38 @@ class Produto:
         for p in self.produtos:
             print(f"ID: {p['id']} | Nome: {p['nome']} | Quantidade: {p['quantidade']} | Preço (UNID): R$ {p['preco']:.2f}")
 
-    '''def realizar_venda(self, id_produto, quantidade_produto):
+    def realizar_venda(self, id_cliente, id_produto, quantidade_produto):
         self.id_produto = id_produto
         self.quantidade_produto = quantidade_produto 
-        self.vendas.enqueue({
+        self.vendas.inserir({
             'Produto': self.id_produto,
-            'Quantidade': self.quantidade_produto
+            'Quantidade': self.quantidade_produto,
+            "Cliente": id_cliente
         })
+    
     def buscar_preco_produto(self, id_produto):
         for p in self.produtos:
             if p['id'] == id_produto:
-                return p['preco']'''
+                return p['preco']
+        return None
+    
+    def buscar_produto(self, id_produto):
+        for produto in self.produtos:
+            if produto['id'] == id_produto:
+                return produto['id']
+        return None
+    
+    def buscar_quantidade_produto(self, id_produto):
+        for produto in self.produtos:
+            if produto['id'] == id_produto:
+                return produto['quantidade']
+        return None
+    
+    def buscar_nome_produto(self, id_produto):
+        for produto in self.produtos:
+            if produto['id'] == id_produto:
+                return produto['nome']
+        return None
 
     def ver_fila_vendas(self):
         pass

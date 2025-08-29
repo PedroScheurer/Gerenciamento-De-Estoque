@@ -6,9 +6,9 @@ class Cliente:
         self.id_cliente = id_cliente
         self.nome_cliente = nome_cliente
         self.clientes.append({
-    "id": id_cliente,
-    "nome": nome_cliente,
-    })
+            "id": id_cliente,
+            "nome": nome_cliente,
+        })
         
     def listar_cliente(self):
         if not self.clientes:
@@ -16,3 +16,9 @@ class Cliente:
             return
         for p in self.clientes:
             print(f"ID: {p['id']} | Nome: {p['nome']}")
+
+    def buscar_cliente(self, id_cliente):
+        for cliente in self.clientes:
+            if cliente['id'] == id_cliente:
+                return cliente
+        return None
