@@ -177,11 +177,10 @@ while True:
             print("\n-------- VALOR TOTAL DE VENDAS --------")
             if not valor_total_vendas:
                 print("Nenhuma venda foi realizada.")
-                input("\nPressione ENTER para continuar...")
             else:
                 print(f"R$ {valor_total_vendas:.2f}")
-                input("\nPressione ENTER para continuar...")
-                os.system("cls")
+            input("\nPressione ENTER para continuar...")       
+            os.system("cls")
 
         elif opcao == 9:
             os.system("cls")
