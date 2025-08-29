@@ -9,17 +9,16 @@ class Pilha:
         return
     
     def remover(self):
-        self.pilha.removerInicio()
-        return
+        return self.pilha.removerInicio()
     
     def primeiro(self):
-        self.pilha.primeiro()
-        return
+        return self.pilha.primeiro()
     
     def ultimo(self):
-        self.pilha.ultimo()
-        return
+        return self.pilha.ultimo()
     
     def imprimir(self):
-        self.pilha.imprimir()
-        return 
+        return self.pilha.imprimir()
+    
+    def __str__(self):
+        return str(self.pilha)
