@@ -197,7 +197,7 @@ while True:
             sys.exit()
 
         else:
-            print("Opção inválida. Digite um número entre 1 e 14.")
+            print("\nOperação inválida. Pressione ENTER para tentar novamente...")
 
     except Exception as e:
         print(f"ERRO\n{e}")
