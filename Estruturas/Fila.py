@@ -6,22 +6,18 @@ class Fila:
 
     def inserir(self, item):
         self.fila.inserirFinal(item)
-        return
-    
+
     def remover(self):
-        self.fila.removerInicio()
-        return    
+        return self.fila.removerInicio() 
 
     def primeiro(self):
-        self.fila.primeiro()
-        return
-    
+        return self.fila.primeiro()  
+
     def ultimo(self):
-        self.fila.ultimo()
-        return
-    
+        return self.fila.ultimo()  
+
     def imprimir(self):
-        return self.fila.imprimir()
-    
+        self.fila.imprimir()
+
     def __str__(self):
         return str(self.fila)

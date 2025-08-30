@@ -57,7 +57,10 @@ while True:
             preco_produto = ler_float("Digite o preço unitário do produto: ")
             id_produto += 1 
             produto.cadastrar_produto(nome_produto, quantidade_produto, preco_produto, id_produto)
-            historico.inserir({"acao": "cadastro_produto", "dados": {"id": id_produto}})
+            historico.inserir({
+                "acao": "cadastro_produto",
+                "dados": {"id": id_produto, "nome": nome_produto}
+            })
             print(f"\nProduto '{nome_produto}' cadastrado com sucesso! (ID: {id_produto})")
             input("\nPressione ENTER para voltar ao menu...")
 
@@ -71,7 +74,10 @@ while True:
             nome_cliente = input("\nDigite o nome do cliente: ").strip().title()
             id_cliente += 1 
             cliente.cadastrar_cliente(id_cliente, nome_cliente)
-            historico.inserir({"acao": "cadastro_cliente", "dados": {"id": id_cliente}})
+            historico.inserir({
+                "acao": "cadastro_cliente",
+                "dados": {"id": id_cliente, "nome": nome_cliente}
+            })
             print(f"\nCliente '{nome_cliente}' cadastrado com sucesso! (ID: {id_cliente})")
             input("\nPressione ENTER para voltar ao menu...")
 
@@ -144,11 +150,14 @@ while True:
                 dados = ultima["dados"]
                 if acao == "cadastro_produto":
                     produto.remover_produto(dados["id"])
+                    print(f"Desfeito: cadastro do produto '{dados['nome']}'")
                 elif acao == "cadastro_cliente":
                     cliente.remover_cliente(dados["id"])
+                    print(f"Desfeito: cadastro do cliente '{dados['nome']}'")
                 elif acao == "venda":
                     produto.estornar_venda(dados, cliente)
                     valor_total_vendas -= dados["valor"]
+                    print("Desfeito: última venda.")
             input("\nPressione ENTER para continuar...")
 
         elif opcao == 11:
@@ -175,6 +184,10 @@ while True:
 
         elif opcao == 13:
             produto.carregar_estoque()
+            if produto.produtos:
+                id_produto = max(p['id'] for p in produto.produtos)
+            else:
+                id_produto = 0
             print("Estoque carregado de 'estoque.txt'.")
             input("\nPressione ENTER para voltar ao menu...")
 
@@ -188,5 +201,6 @@ while True:
 
     except Exception as e:
         print(f"ERRO\n{e}")
+
 
 
