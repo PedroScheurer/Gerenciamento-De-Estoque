@@ -14,6 +14,21 @@ id_produto = 0
 id_cliente = 0
 valor_total_vendas = 0
 
+def ler_inteiro(prompt):
+    while True:
+        valor = input(prompt).strip()
+        if valor.isdigit():
+            return int(valor)
+        print("Digite apenas números inteiros válidos!")
+
+def ler_float(prompt):
+    while True:
+        valor = input(prompt).strip().replace(",", ".")
+        try:
+            return float(valor)
+        except ValueError:
+            print("Digite um valor numérico válido!")
+
 while True:
     try:
         print("\n-------- MENU ESTOQUE --------")
@@ -32,13 +47,14 @@ while True:
         print("12 - Salvar estoque em arquivo")
         print("13 - Carregar estoque de arquivo")
         print("14 - Sair")
-        opcao = int(input("\nDigite a opção desejada: "))
+
+        opcao = ler_inteiro("\nDigite a opção desejada: ")
 
         if opcao == 1:
             os.system("cls")
             nome_produto = input("\nDigite o nome do produto: ").strip().title()
-            quantidade_produto = int(input("Digite a quantidade do produto: "))
-            preco_produto = float(input("Digite o preço unitário do produto: "))
+            quantidade_produto = ler_inteiro("Digite a quantidade do produto: ")
+            preco_produto = ler_float("Digite o preço unitário do produto: ")
             id_produto += 1 
             produto.cadastrar_produto(nome_produto, quantidade_produto, preco_produto, id_produto)
             historico.inserir({"acao": "cadastro_produto", "dados": {"id": id_produto}})
@@ -66,19 +82,19 @@ while True:
 
         elif opcao == 5:
             os.system("cls")
-            id_cliente_venda = int(input("\nInforme o ID do cliente: "))
+            id_cliente_venda = ler_inteiro("\nInforme o ID do cliente: ")
             cliente_encontrado = cliente.buscar_cliente(id_cliente_venda)
             if cliente_encontrado is None:
                 print("Cliente não encontrado.")
                 input("\nPressione ENTER para voltar ao menu...")
                 continue
-            id_produto_venda = int(input("\nDigite o ID do produto: "))
+            id_produto_venda = ler_inteiro("\nDigite o ID do produto: ")
             produto_encontrado = produto.buscar_produto(id_produto_venda)
             if produto_encontrado is None:
                 print("Produto não encontrado.")
                 input("\nPressione ENTER para voltar ao menu...")
                 continue
-            quantidade_vendida = int(input("\nDigite a quantidade: "))
+            quantidade_vendida = ler_inteiro("\nDigite a quantidade: ")
             if quantidade_vendida <= 0 or quantidade_vendida > produto.buscar_quantidade_produto(id_produto_venda):
                 print("Quantidade inválida ou não disponível em estoque.")
                 input("\nPressione ENTER para voltar ao menu...")
@@ -137,7 +153,19 @@ while True:
 
         elif opcao == 11:
             termo = input("Digite o nome ou ID do produto: ").strip()
-            produto.pesquisar_produto(termo)
+            if termo.isdigit():
+                produto_encontrado = produto.buscar_produto(int(termo))
+                if produto_encontrado:
+                    print(f"ID: {produto_encontrado['id']} | Nome: {produto_encontrado['nome']} | Quantidade: {produto_encontrado['quantidade']} | Preço: R$ {produto_encontrado['preco']:.2f}")
+                else:
+                    print("Produto não encontrado pelo ID.")
+            else:
+                encontrados = [p for p in produto.produtos if termo.lower() in p['nome'].lower()]
+                if encontrados:
+                    for p in encontrados:
+                        print(f"ID: {p['id']} | Nome: {p['nome']} | Quantidade: {p['quantidade']} | Preço: R$ {p['preco']:.2f}")
+                else:
+                    print("Nenhum produto encontrado com esse nome.")
             input("\nPressione ENTER para voltar ao menu...")
 
         elif opcao == 12:
@@ -155,6 +183,10 @@ while True:
             time.sleep(2)
             sys.exit()
 
+        else:
+            print("Opção inválida. Digite um número entre 1 e 14.")
+
     except Exception as e:
         print(f"ERRO\n{e}")
+
 
