@@ -1,0 +1,2 @@
+1;Computador;0;10000.0
+2;Notebook;10;10000.0
